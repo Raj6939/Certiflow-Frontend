@@ -8,6 +8,7 @@
             </navbar-toggle-button>
             <router-link class="navbar-brand" to="/">
                 <img :src="logo" class="navbar-brand-img" alt="...">
+                <h1>CertiFlow</h1>
             </router-link>
 
             <slot name="mobile-right">
@@ -94,13 +95,13 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="https://www.creative-tim.com/learning-lab/bootstrap-vue/colors/argon-dashboard">
-                            <i class="ni ni-palette"></i> Foundation
+                            <i class="ni ni-palette"></i>CertiFlow Guide
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
                            href="https://www.creative-tim.com/learning-lab/bootstrap-vue/alerts/argon-dashboard">
-                            <i class="ni ni-ui-04"></i> Components
+                            <i class="ni ni-ui-04"></i> Learn SSI
                         </a>
                     </li>
                 </ul>
@@ -119,7 +120,7 @@
     props: {
       logo: {
         type: String,
-        default: 'img/brand/green.png',
+        default: 'img/brand/icon.png',
         description: 'Sidebar app logo'
       },
       autoClose: {

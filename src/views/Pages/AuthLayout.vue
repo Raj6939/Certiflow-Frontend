@@ -7,10 +7,9 @@
       class="navbar-horizontal navbar-main navbar-top navbar-dark"
       expand="lg"
     >
-      <div slot="brand" class="navbar-wrapper">
-        <b-navbar-brand to="/">
-          <img src="img/brand/white.png">
-        </b-navbar-brand>
+      <div slot="brand" class="navbar-wrapper d-flex">        
+          <img class="mr-2" src="img/brand/icon.png" height="50px" width="50px">
+               <h1>CertiFlow</h1>        
       </div>
 
      <template>
@@ -18,7 +17,8 @@
          <b-row>
            <b-col cols="6" class="collapse-brand">
              <router-link to="/">
-               <img src="img/brand/green.png">
+               <img src="img/brand/icon.png">
+               <h1>CertiFlow</h1>
              </router-link>
            </b-col>
            <b-col cols="6" class="collapse-close">
@@ -29,7 +29,7 @@
            </b-col>
          </b-row>
        </div>
-         <b-navbar-nav  class="align-items-lg-center ml-lg-auto">
+         <!-- <b-navbar-nav  class="align-items-lg-center ml-lg-auto">
            <b-nav-item to="/dashboard">
                <i class="ni ni-planet"></i>
                <span class="nav-link-inner--text">Dashboard</span>
@@ -46,7 +46,7 @@
                <i class="ni ni-single-02"></i>
                <span class="nav-link-inner--text">Profile</span>
            </b-nav-item>
-       </b-navbar-nav>
+       </b-navbar-nav> -->
      </template>
     </base-nav>
 
@@ -62,15 +62,15 @@
     <footer class="py-5" id="footer-main">
       <b-container >
         <b-row align-v="center" class="justify-content-xl-between">
-          <b-col xl="6">
+          <!-- <b-col xl="6">
             <div class="copyright text-center text-xl-left text-muted">
               © {{year}} <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
             </div>
-          </b-col>
-          <b-col xl="6" class="col-xl-6">
+          </b-col> -->
+          <!-- <b-col xl="6" class="col-xl-6">
             <b-nav  class="nav-footer justify-content-center justify-content-xl-end">
               <b-nav-item href="https://www.creative-tim.com" target="_blank" >
-                Creative Tim
+                CertiFlow
               </b-nav-item>
               <b-nav-item href="https://www.creative-tim.com/presentation" target="_blank" >
                 About Us
@@ -82,7 +82,7 @@
                 License
               </b-nav-item>
             </b-nav>
-          </b-col>
+          </b-col> -->
         </b-row>
       </b-container>
     </footer>

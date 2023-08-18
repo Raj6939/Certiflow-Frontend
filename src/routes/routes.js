@@ -36,7 +36,12 @@ const routes = [
         path: '/tables',
         name: 'tables',
         component: () => import(/* webpackChunkName: "demo" */ '../views/RegularTables.vue')
-      }
+      },
+      // {
+      //   path: '/credentialPage',
+      //   name: 'credentialPage',
+      //   component: () => import(/* webpackChunkName: "demo" */ '../views/CredentialPage.vue')
+      // }
     ]
   },
   {

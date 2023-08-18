@@ -14,24 +14,16 @@
 
         <sidebar-item
             :link="{
-              name: 'Icons',
+              name: 'Design',
               path: '/icons',
-              icon: 'ni ni-planet text-blue'
+              icon: 'ni ni-paper-diploma'
               }"
             >
-        </sidebar-item>
+        </sidebar-item>   
 
         <sidebar-item
               :link="{
-                name: 'Maps',
-                path: '/maps',
-                icon: 'ni ni-pin-3 text-orange'
-              }">
-        </sidebar-item>
-
-        <sidebar-item
-              :link="{
-                name: 'User Profile',
+                name: 'Profile',
                 path: '/profile',
                 icon: 'ni ni-single-02 text-yellow'
                 }">
@@ -39,26 +31,34 @@
 
         <sidebar-item
                 :link="{
-                  name: 'Tables',
+                  name: 'Issue Certificate',
                   path: '/tables',
-                  icon: 'ni ni-bullet-list-67 text-red'
+                  icon: 'ni ni-paper-diploma text-red'
                 }">
         </sidebar-item>
 
         <sidebar-item
                   :link="{
-                    name: 'Login',
+                    name: 'Templates',
                     path: '/login',
                     icon: 'ni ni-key-25 text-info'
                   }">
         </sidebar-item>
-        <sidebar-item
+
+        <!-- <sidebar-item
+                  :link="{
+                    name: 'Login',
+                    path: '/login',
+                    icon: 'ni ni-key-25 text-info'
+                  }">
+        </sidebar-item> -->
+        <!-- <sidebar-item
                   :link="{
                     name: 'Register',
                     path: '/register',
                     icon: 'ni ni-circle-08 text-pink'
                   }">
-        </sidebar-item>
+        </sidebar-item> -->
       </template>
 
       <template slot="links-after">
@@ -74,11 +74,11 @@
           </b-nav-item>
           <b-nav-item href="https://www.creative-tim.com/learning-lab/bootstrap-vue/colors/argon-dashboard">
               <i class="ni ni-palette"></i>
-              <b-nav-text class="p-0">Foundation</b-nav-text>
+              <b-nav-text class="p-0">API</b-nav-text>
           </b-nav-item>
           <b-nav-item href="https://www.creative-tim.com/learning-lab/bootstrap-vue/avatar/argon-dashboard">
               <i class="ni ni-ui-04"></i>
-              <b-nav-text class="p-0">Components</b-nav-text>
+              <b-nav-text class="p-0">Documententation</b-nav-text>
           </b-nav-item>
         </b-nav>
       </template>

@@ -4,21 +4,20 @@
     <base-header class="pb-6 pb-8 pt-5 pt-md-8 bg-gradient-success">
       <!-- Card stats -->
       <b-row>
-        <b-col xl="3" md="6">
-          <stats-card title="Total traffic"
+        <b-col xl="4" md="4">
+          <stats-card title="Issued Certificates"
                       type="gradient-red"
                       sub-title="350,897"
-                      icon="ni ni-active-40"
+                      icon="ni ni-paper-diploma"
                       class="mb-4">
-
             <template slot="footer">
               <span class="text-success mr-2">3.48%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
         </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="Total traffic"
+        <b-col xl="4" md="4">
+          <stats-card title="Total Certificate Templates"
                       type="gradient-orange"
                       sub-title="2,356"
                       icon="ni ni-chart-pie-35"
@@ -30,11 +29,11 @@
             </template>
           </stats-card>
         </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="Sales"
+        <b-col xl="4" md="4">
+          <stats-card title="Organizations"
                       type="gradient-green"
                       sub-title="924"
-                      icon="ni ni-money-coins"
+                      icon="ni ni-badge"
                       class="mb-4">
 
             <template slot="footer">
@@ -44,7 +43,7 @@
           </stats-card>
 
         </b-col>
-        <b-col xl="3" md="6">
+        <!-- <b-col xl="3" md="6">
           <stats-card title="Performance"
                       type="gradient-info"
                       sub-title="49,65%"
@@ -56,7 +55,7 @@
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
-        </b-col>
+        </b-col> -->
       </b-row>
     </base-header>
 
@@ -64,7 +63,7 @@
     <b-container fluid class="mt--7">
       <b-row>
         <b-col xl="8" class="mb-5 mb-xl-0">
-          <card type="default" header-classes="bg-transparent">
+          <!-- <card type="default" header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
                 <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
@@ -98,11 +97,11 @@
               :extra-options="bigLineChart.extraOptions"
             >
             </line-chart>
-          </card>
+          </card> -->
         </b-col>
 
         <b-col xl="4" class="mb-5 mb-xl-0">
-          <card header-classes="bg-transparent">
+          <!-- <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
@@ -116,7 +115,7 @@
               :chart-data="redBarChart.chartData"
             >
             </bar-chart>
-          </card>
+          </card> -->
         </b-col>
       </b-row>
       <!-- End charts-->

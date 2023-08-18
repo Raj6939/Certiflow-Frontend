@@ -9,7 +9,7 @@
       <b-col lg="6">
         <b-nav class="nav-footer justify-content-center justify-content-lg-end">
           <b-nav-item ref="https://www.creative-tim.com" target="_blank">
-            Creative Tim
+            CertiFlow
           </b-nav-item>
           <b-nav-item href="https://www.creative-tim.com/presentation" target="_blank">
            About Us
