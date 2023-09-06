@@ -5,7 +5,12 @@ import NotFound from '@/views/NotFoundPage.vue';
 
 const routes = [
   {
-    path: '/',
+    path:'/',
+    redirect:'login',
+    component:AuthLayout
+  },
+  {     
+    path: '/dashboard',
     redirect: 'dashboard',
     component: DashboardLayout,
     children: [
@@ -18,7 +23,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Dashboard.vue')
       },
       {
-        path: '/icons',
+        path: 'tables/icons',
         name: 'icons',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Icons.vue')
       },
@@ -37,11 +42,11 @@ const routes = [
         name: 'tables',
         component: () => import(/* webpackChunkName: "demo" */ '../views/RegularTables.vue')
       },
-      // {
-      //   path: '/credentialPage',
-      //   name: 'credentialPage',
-      //   component: () => import(/* webpackChunkName: "demo" */ '../views/CredentialPage.vue')
-      // }
+      {
+        path: '/tables/icons/design',
+        name: 'design',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Design.vue')
+      }         
     ]
   },
   {
@@ -59,7 +64,17 @@ const routes = [
         name: 'register',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Register.vue')
       },
-      { path: '*', component: NotFound }
+      {
+        path: '/credential/issue',
+        name: 'issueCerificate',       
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/IssueCertificate.vue')
+      },
+      {
+        path: '/invitation',
+        name: 'invitation',       
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Invitation.vue')
+      },
+      { path: '*', component: NotFound },
     ]
   }
 ];

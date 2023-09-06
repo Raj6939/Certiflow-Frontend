@@ -1,31 +1,46 @@
 <template>
     <b-card no-body>
         <b-card-header class="border-0">
-            <h3 class="mb-0">Light table</h3>
+            <h3 class="mb-0">Issued Certificates</h3>
         </b-card-header>
 
         <el-table class="table-responsive table"
                   header-row-class-name="thead-light"
                   :data="projects">
-            <el-table-column label="Project"
+            <el-table-column label="Certificate ID"
                              min-width="310px"
                              prop="name">
                 <template v-slot="{row}">
-                    <b-media no-body class="align-items-center">
-                        <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" :src="row.img">
-                        </a>
+                    <b-media no-body class="align-items-center">                        
                         <b-media-body>
-                            <span class="font-weight-600 name mb-0 text-sm">{{row.title}}</span>
+                            <a :href="`https://explorer.hypersign.id/hypersign-testnet/revocationRegistry/${row.title}`" 
+                            class="font-weight-600 name mb-0 text-sm"
+                            target="_blank"
+                            >{{ truncate1(row.title,30) }}</a>
                         </b-media-body>
                     </b-media>
                 </template>
             </el-table-column>
-            <el-table-column label="Budget"
+            <el-table-column label="Type"
                              prop="budget"
                              min-width="140px">
             </el-table-column>
+            
 
+            <el-table-column label="Issued on" min-width="190px">
+                <template v-slot="{row}">
+                <div class="avatar-group">
+                                    <span>{{ row.issuedOn }}</span>  
+                </div>
+            </template>
+            </el-table-column>
+
+            <el-table-column label="Recepient"
+                             prop="completion"
+                             min-width="240px">
+                <span>raj@hypermine.in</span>
+            </el-table-column>
+            
             <el-table-column label="Status"
                              min-width="170px"
                              prop="status">
@@ -37,60 +52,39 @@
                 </template>
             </el-table-column>
 
-            <el-table-column label="Users" min-width="190px">
-                <div class="avatar-group">
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip"
-                       data-original-title="Ryan Tompson">
-                        <img alt="Image placeholder" src="img/theme/team-1.jpg">
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip"
-                       data-original-title="Romina Hadid">
-                        <img alt="Image placeholder" src="img/theme/team-2.jpg">
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip"
-                       data-original-title="Alexander Smith">
-                        <img alt="Image placeholder" src="img/theme/team-3.jpg">
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip"
-                       data-original-title="Jessica Doe">
-                        <img alt="Image placeholder" src="img/theme/team-4.jpg">
-                    </a>
-                </div>
-            </el-table-column>
-
-            <el-table-column label="Completion"
-                             prop="completion"
-                             min-width="240px">
-                <template v-slot="{row}">
-                    <div class="d-flex align-items-center">
-                        <span class="completion mr-2">{{row.completion}}%</span>
-                        <div>
-                            <base-progress :type="row.statusType" :value="row.completion"/>
-                        </div>
-                    </div>
-                </template>
-            </el-table-column>
         </el-table>
+        
 
         <b-card-footer class="py-4 d-flex justify-content-end">
             <base-pagination v-model="currentPage" :per-page="10" :total="50"></base-pagination>
         </b-card-footer>
     </b-card>
 </template>
-<script>
-  import projects from './../projects'
+<script>  
   import { Table, TableColumn} from 'element-ui'
+  import { truncate } from '../../../util/hsConstants';
   export default {
     name: 'light-table',
     components: {
       [Table.name]: Table,
       [TableColumn.name]: TableColumn
     },
+    props:{
+        projects:{
+            type:Array,
+            default:'',
+            description:'Array of Issued VC'
+        }
+    },
     data() {
-      return {
-        projects,
+      return {        
         currentPage: 1
       };
-    }
+    }, 
+    methods:{
+    truncate1(str, number) {
+      return truncate(str, number);
+    },
+    }   
   }
 </script>

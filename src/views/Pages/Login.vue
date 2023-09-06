@@ -24,23 +24,23 @@
     <b-container class="mt--8 pb-5">
       <b-row class="justify-content-center">
         <b-col lg="5" md="7">
-          <b-card no-body class="bg-secondary border-0 mb-0">
+          <b-card no-body class="bg-teal border-0 mb-0">
             <b-card-header class="bg-transparent pb-5"  >
-              <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
+              <div class="text-muted text-center mt-2 mb-3"><small class="text-white">Sign in with</small></div>
               <div class="btn-wrapper text-center">
                 <!-- <a href="#" class="btn btn-neutral btn-icon">
                   <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
                   <span class="btn-inner--text">Github</span>
                 </a> -->
-                <a href="#" class="btn btn-neutral btn-icon">
+                <a href="#" class="btn btn-neutral btn-icon bg-white">
                   <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
-                  <span class="btn-inner--text">Google</span>
+                  <span class="btn-inner--text" @click="loginWGoogle">Google</span>
                 </a>
               </div>
             </b-card-header>
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign in with credentials</small>
+                <small class="text-white">Or sign in with credentials</small>
               </div>
               <validation-observer v-slot="{handleSubmit}" ref="formValidator">
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
@@ -64,9 +64,16 @@
                   </base-input>
 
                   <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox>
-                  <div class="text-center">
-                    <base-button type="primary" native-type="submit" class="my-4">Sign in</base-button>
+                  <div class="text-center" style="border-radius: 5px;">
+                    <!-- <base-button type="primary" native-type="submit" class="my-4 bg-white text-dark">Sign in</base-button> -->
+                    <router-link to="/dashboard">
+                      <base-button type="primary" native-type="submit" class="my-4 bg-white text-dark">Sign in</base-button>
+                    </router-link>
                   </div>
+                  <!-- <a class="btn btn-neutral btn-icon bg-white">
+                  <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
+                  <span class="btn-inner--text">Google</span>
+                </a> -->
                 </b-form>
               </validation-observer>
             </b-card-body>
@@ -85,6 +92,7 @@
   </div>
 </template>
 <script>
+import loginWithGoogle from "../../util/loginWithGoogle"
   export default {
     data() {
       return {
@@ -96,9 +104,13 @@
       };
     },
     methods: {
+      loginWGoogle(){
+        this.loginWithGoogle()
+      },
       onSubmit() {
         // this will be called only after form is valid. You can do api call here to login
       }
-    }
+    },
+    mixins:[loginWithGoogle],
   };
 </script>

@@ -2,63 +2,35 @@
   <div class="wrapper">
     <notifications></notifications>
     <side-bar>
-      <template slot="links">
-        <sidebar-item
-          :link="{
-            name: 'Dashboard',
-            path: '/dashboard',
-            icon: 'ni ni-tv-2 text-primary',
-          }"
-        >
-        </sidebar-item>
+      <template slot="links">                
+        <b-nav-item
+              to="/dashboard"              
+              >
+              <i class="ni ni-tv-2"></i>
+              <b-nav-text class="p-0">Dashboard</b-nav-text>
+        </b-nav-item>
+        
+        <!-- <b-nav-item
+              to="/tables/icons"              
+               >
+              <i class="fa fa-paint-brush"></i>
+              <b-nav-text class="p-0">Designs</b-nav-text>
+        </b-nav-item> -->
 
-        <sidebar-item
-            :link="{
-              name: 'Design',
-              path: '/icons',
-              icon: 'ni ni-paper-diploma'
-              }"
-            >
-        </sidebar-item>   
-
-        <sidebar-item
-              :link="{
-                name: 'Profile',
-                path: '/profile',
-                icon: 'ni ni-single-02 text-yellow'
-                }">
-        </sidebar-item>
-
-        <sidebar-item
-                :link="{
-                  name: 'Issue Certificate',
-                  path: '/tables',
-                  icon: 'ni ni-paper-diploma text-red'
-                }">
-        </sidebar-item>
-
-        <sidebar-item
-                  :link="{
-                    name: 'Templates',
-                    path: '/login',
-                    icon: 'ni ni-key-25 text-info'
-                  }">
-        </sidebar-item>
-
-        <!-- <sidebar-item
-                  :link="{
-                    name: 'Login',
-                    path: '/login',
-                    icon: 'ni ni-key-25 text-info'
-                  }">
-        </sidebar-item> -->
-        <!-- <sidebar-item
-                  :link="{
-                    name: 'Register',
-                    path: '/register',
-                    icon: 'ni ni-circle-08 text-pink'
-                  }">
-        </sidebar-item> -->
+        <b-nav-item
+              to="/tables"              
+               >
+              <i class="ni ni-paper-diploma"></i>
+              <b-nav-text class="p-0">Issue Certificate</b-nav-text>
+        </b-nav-item>
+   
+        <b-nav-item
+              to="/profile"              
+               >
+              <i class="ni ni-single-02"></i>
+              <b-nav-text class="p-0">Profile</b-nav-text>
+        </b-nav-item>                
+        
       </template>
 
       <template slot="links-after">

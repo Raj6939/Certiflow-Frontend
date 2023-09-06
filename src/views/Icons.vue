@@ -1,134 +1,20 @@
 <template>
-  <div>
-    <b-sidebar id="sidebar-right" right shadow width="40%" :title="edit ? 'Edit Application' : 'Add Application'">
-      <div class="container"  v-if="isPreview">        
-            <b-card-header header-tag="header" class="p-1 border-0 accordin-header accordion-header-theme"  role="tab">
-              <b-button v-b-toggle.accordion-1 style="pointer-events:none;" variant="info"
-                class="bg-transparent border-0 text-left theme-color" title="Preview">
-                <i class="fas fa-file-contract"></i> Preview
-              </b-button>
-              <b-button variant="info" style="float:right" class="bg-transparent border-0 text-left theme-color"
-                title="Close" @click="closePreview">
-                <i class="fas fa-close">Close</i>
-              </b-button>
-            </b-card-header>
-            
-            <div class="cred-card-body" style="padding: 12px; color: rgb(80, 54, 101); font-size: small;">
-          <div class="container" align="center">
-            <table class="cert" style="border: 5px solid #b2bbc1; border-right: 5px solid #b2bbc1; border-left: 5px solid #b2bbc1; width: 90%; font-family: arial; color: rgb(80, 54, 101);">
-              <tr>
-                <td align="center" class="crt_logo">
-                <img src="../assets/hypersign.jpg" class="mt-2" width="60px" height="60px" alt="logo">
-
-                </td>
-              </tr>
-              <tr>
-                <td align="center">      
-                  <h1 class="crt_title" style="margin-top: 5px; letter-spacing: 1px; color: rgb(80, 54, 101) !important;">{{ certDetails.certName ? certDetails.certName : '{ Certificate Name}' }}</h1>
-                  <h2 style="font-size: larger; color: rgb(80, 54, 101);">CERTIFICATE</h2>
-                  <p style="margin-bottom: 0;">This Certificate is awarded to</p>
-                  <h3>{{ certDetails.subName ? certDetails.subName : '{ Subject Name }' }}</h3>
-                  <h1 class="crt_user" style="font-family: 'Satisfy', cursive; font-size: 40px; margin-top: 0; margin-bottom: 0;">{{ certDetails.subName }}</h1>                  
-                  <p style="margin-bottom: 0;">for succuessfully participated in {{ certDetails.certName ? certDetails.certName : '{ Certificate Name }' }}</p>
-                  <div style="display: flex;">
-                  <div style="display: inline; text-align: center;">
-                    <h4 style="margin-right: auto;" class="ml-4 mr-4 mt-4">Issued By</h4>
-                    <span class="mb-2">{{ certDetails.issuerName? certDetails.issuerName:`{ Issuer Name }` }}</span>
-                  </div>
-                  <div style="margin-left: auto; text-align: center;">
-                    <h4 class="mr-4 mt-4">Date</h4>
-                    <span class="mr-4">{{ certDetails.issuanceDate ? certDetails.issuanceDate : '{ Issuance Date }' }}</span>
-                  </div>
-                </div>
-                </td>
-                <tr>
-              </tr>
-              </tr>      
-            </table>
-          </div>
-        </div>
-                  
-  
-        <div class="form-group">
-          <b-button class="primary" @click="previewOpen">Preview</b-button>
-          <b-button class="primary">Save</b-button>
-        </div>
-      </div>
-      <div class="container" v-else>
-        <div class="form-group">
-          <tool-tip infoMessage="Name of the application, upto 20 chars"></tool-tip>
-          <label for="orgName"><strong>Certificate Name<span style="color: red">*</span>:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.certName" id="certName"
-            placeholder="Enter certificate name">
-        </div>
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Subject Name:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.subName" id="certName"
-            placeholder="Enter Subject name">
-        </div>
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Subject Email Id:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.subEmail" id="certName"
-            placeholder="Enter Subject Email">
-        </div>
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Issuance Date:</strong></label>
-          <input type="date" class="form-control" v-model="certDetails.issuanceDate" id="certName"
-            placeholder="Enter Subject Email">
-        </div>  
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Issued By:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.issuerName" id="certName"
-            placeholder="Enter Subject Email">
-        </div>                 
-  
-        <div class="form-group">
-          <b-button class="primary" @click="previewOpen">Preview</b-button>
-          <b-button class="primary">Save</b-button>
-        </div>
-      </div>
-    </b-sidebar>
+  <div>    
        <!-- BootstrapVue Done -->
     <base-header class="pb-6 pb-8 pt-md-5 bg-gradient-success">
-      <!-- Card stats -->
-     
+      <!-- Card stats -->   
+      <b-breadcrumb  style="background-color: transparent;">   
+    <b-breadcrumb-item to="/tables">
+      <b-icon icon="house-fill" scale="1.25" shift-v="1.25" aria-hidden="true"></b-icon>      
+      Issued Certificates</b-breadcrumb-item>
+    <b-breadcrumb-item active>Schema</b-breadcrumb-item>    
+  </b-breadcrumb>  
     </base-header>
-
+    
     <b-container fluid class="mt--7">
       <b-row class="justify-content-center">
-        <b-col lg="12">
-          <card header-classes="bg-transparent">
-            <h3 slot="header" class="mb-0">Design</h3>
-            <b-row class="icon-examples">
-              <b-col lg="3" md="6">
-                <p>Select Design Template</p>
-                <div class="text-center mt-4">                  
-                <b-card
-                  title="Course Completion Certificate"
-                  img-src="https://demos.creative-tim.com/argon-dashboard-pro-bs4/assets/img/theme/img-1-1000x600.jpg"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2"
-                >
-                  <b-card-text>
-                    Simple Course Completion Certificate template
-                  </b-card-text>                
-                    <b-button variant="primary" @click="openSlider" >Certificate</b-button>               
-                </b-card>              
-              </div>
-              </b-col>             
-            </b-row>              
-          </card>
+        <b-col lg="12">          
+          <schema-table :schemaTypes="schemaTypes"></schema-table>              
         </b-col>
       </b-row>
     </b-container>
@@ -138,24 +24,24 @@
   import Vue from 'vue'
   import VueClipboard from 'vue-clipboard2'
   import BaseHeader from '@/components/BaseHeader';
-  import logoImage from "../assets/hypersign.jpg"
-  import html2canvas from "html2canvas"  
-  // import CreativeEditorSDK from '@cesdk/cesdk-js';  
-  // import CreativeEngine from "@cesdk/engine"
+  import axios from "axios"
+  import schemaTypes from './Tables/schemaTypes';
+  import SchemaTable from './Tables/RegularTables/SchemaTable.vue';
   Vue.use(VueClipboard)
   export default {
-    name: 'icons',
+    name: 'Icons',
     components: {
-      BaseHeader
+      BaseHeader,
+      SchemaTable
     },
     data(){
       return{
+        schemaTypes,
         certDetails:{
           certName:'',
           issuerName:'',
-          subName:'',
-          issuerName:'',
-          subEmail:'',
+          recipientName:'',
+          recipientEmail:'',
           issuanceDate: ''
         },
         imgS:'',
@@ -167,19 +53,30 @@
     mounted(){
     },
     methods: {
+      async save(){
+     const data = await axios({
+          method: 'post',
+          url: 'http://localhost:3000/send/email',
+          data: this.certDetails
+        });             
+        console.log(data)
+        this.$notify({
+          type: 'success',
+          message: 'Successfully send certificate'
+        })
+      },
       closePreview(){
         this.isPreview = false
       },
-      previewOpen () {
+      previewOpen () {      
         this.isPreview = true        
       },
       openSlider () {        
         this.certDetails = {
-          certName:'',
+          certName:'',          
+          recipientName:'',
           issuerName:'',
-          subName:'',
-          issuerName:'',
-          subEmail:'',
+          recipientEmail:'',
           issuanceDate: ''
         },
         this.$root.$emit("bv::toggle::collapse", "sidebar-right");
@@ -189,72 +86,7 @@
           type: 'info',
           message: 'Copied to clipboard'
         })
-      },
-      generateCan(){      
-      },
-      async generateCertificate(element) {
-      console.log(element)
-        try {
-          const canvas = await html2canvas(element);
-          console.log(canvas)
-          // Convert canvas to PNG image data
-          const imageData = canvas.toDataURL();       
-          return imageData
-        } catch (error) {
-          console.error('Error generating certificate:', error);
-        }
-      },
-      async createTemplate(){
-        var div = document.createElement('div');
-        div.style.width = '717px';
-        div.style.height = '1224px';
-        div.innerHTML = 
-        `<div class="cred-card-body" style="padding: 12px; color: rgb(80, 54, 101); font-size: small;">
-          <div class="container" align="center">
-            <table class="cert" style="border: 5px solid #b2bbc1; border-right: 5px solid #b2bbc1; border-left: 5px solid #b2bbc1; width: 100%; font-family: arial; color: rgb(80, 54, 101);">
-              <tr>
-                <td align="center" class="crt_logo">
-                <img src="${logoImage}" style="margin-top:5px;" width="30px" height="30px" alt="logo">
-
-                </td>
-              </tr>
-              <tr>
-                <td align="center">      
-                  <h1 class="crt_title" style="margin-top: 5px; letter-spacing: 1px; color: rgb(80, 54, 101) !important;">SSI Workshop</h1>
-                  <h2 style="font-size: larger; color: rgb(80, 54, 101);">CERTIFICATE</h2>
-                  <p style="margin-bottom: 0;">This Certificate is awarded to</p>
-                  <h1 class="crt_user" style="font-family: 'Satisfy', cursive; font-size: 40px; margin-top: 0; margin-bottom: 0;">Raj</h1>
-                  <h3 class="afterName" style="font-weight: 100; color: rgb(80, 54, 101); margin-top: 0; margin-bottom: 0;">For participating in UVCE HAck<br> organized by <br> UVCE</h3>
-                  <h3 style="margin-bottom: 0;">Awarded as 1st</h3>
-                  <div style="display: flex;">
-                  <div style="display: inline; text-align: center;">
-                    <h3 style="margin-right: auto;" class="ml-4">Organizer</h3>
-                    <span>UVCE</span>
-                  </div>
-                  <div style="margin-left: auto; text-align: center;">
-                    <h3 class="mr-4">Date</h3>
-                    <span>15-08-2023</span>
-                  </div>
-                </div>
-                </td>
-                <tr>
-              </tr>
-              </tr>      
-            </table>
-          </div>
-        </div>`;
-        document.body.appendChild(div);
-
-        // Create a canvas element
-        var canvas = document.createElement('canvas');
-        document.body.appendChild(canvas);
-
-        const getCanvas = await this.generateCertificate(div)
-        console.log(getCanvas)
-        document.body.removeChild(canvas);
-        document.body.removeChild(div);
-        this.imgS = getCanvas
-      }
+      },           
     }
   };
 </script>

@@ -21,11 +21,14 @@ import store from "./store"
 import { BootstrapVue} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
 // router setup
 import router from './routes/router';
 // plugin setup
 Vue.use(DashboardPlugin);
 Vue.use(BootstrapVue);
+Vue.use(VueSweetalert2);
 /* eslint-disable no-new */
 new Vue({
   store,

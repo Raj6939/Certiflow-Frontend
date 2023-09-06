@@ -1,75 +1,51 @@
-
 export default [
-  {
-    img: 'img/theme/bootstrap.jpg',
-    title: 'Argon Design System',
-    budget: '$2500 USD',
-    status: 'pending',
-    statusType: 'warning',
-    completion: 60
-  },
-  {
-    img: 'img/theme/angular.jpg',
-    title: 'Angular Now UI Kit PRO',
-    budget: '$1800 USD',
-    status: 'completed',
+  {    
+    title: 'vc:hid:testnet:zwMXZ7FrfVbuRBuFV442NLaBZbcpN2T6RpxRnWNkR7RA',
+    budget: 'HackDiD',
+    status: 'live',
     statusType: 'success',
-    completion: 100
+    issuedOn:'21-08-2023'
   },
-  {
-    img: 'img/theme/sketch.jpg',
-    title: 'Black Dashboard',
-    budget: '$3150 USD',
-    status: 'delayed',
-    statusType: 'danger',
-    completion: 72
+  {   
+    title: 'vc:hid:testnet:z8NDYeg7o1TuNPSKWo5jrsYqqhBPViGUwkFswJ5V6ELnt',
+    budget: 'HackDiD',
+    status: 'live',
+    statusType: 'success',
+    issuedOn:'13-08-2023'
   },
-  {
-    img: 'img/theme/react.jpg',
-    title: 'React Material Dashboard',
-    budget: '$4400 USD',
+  { 
+    title: 'vc:hid:testnet:z88AR7SQyAZyxwsj5Czso5y5iEVX9tc4XCqYo9DHP1Dd6',
+    budget: 'HackDiD',
+    status: 'live',
+    statusType: 'success',
+    issuedOn:'07-08-2023'
+  },
+  { 
+    title: 'vc:hid:testnet:z5YX6261ZEnfqUkiLSneHDvgHtpw1G4qzsF1NCRsMfhkT',
+    budget: 'COSMOCON-INDIA',
     status: 'on schedule',
     statusType: 'info',
-    completion: 90
+    issuedOn:'01-08-2023'
   },
-  {
-    img: 'img/theme/vue.jpg',
-    title: 'Vue Paper UI Kit PRO',
-    budget: '$2200 USD',
+  {   
+    title: 'vc:hid:testnet:z83X3ipLyGbdcjG989wyjhVj5uVm5vxD8cGXHnnKRSUb',
+    budget: 'ETH-INDIA',
     status: 'completed',
     statusType: 'success',
-    completion: 100
+    issuedOn:'15-08-2023'
   },
-  {
-    img: 'img/theme/bootstrap.jpg',
-    title: 'Argon Design System',
-    budget: '$2500 USD',
+  {   
+    title: 'vc:hid:testnet:zGfx8Z9iVC1M78XnC7KzoemEBawgmiidASQab52v2WcCT',
+    budget: 'CODEFURY',
     status: 'pending',
     statusType: 'warning',
-    completion: 60
+    issuedOn:'24-08-2023'
   },
   {
-    img: 'img/theme/angular.jpg',
-    title: 'Angular Now UI Kit PRO',
-    budget: '$1800 USD',
+    title: 'vc:hid:testnet:z83X3ipLyGbdcjG989wyjhVj5uVm5vxD8cGXHnnKRSUb',
+    budget: 'GRAVITON',
     status: 'completed',
     statusType: 'success',
-    completion: 100
-  },
-  {
-    img: 'img/theme/sketch.jpg',
-    title: 'Black Dashboard',
-    budget: '$3150 USD',
-    status: 'delayed',
-    statusType: 'danger',
-    completion: 72
-  },
-  {
-    img: 'img/theme/vue.jpg',
-    title: 'Vue Paper UI Kit PRO',
-    budget: '$2200 USD',
-    status: 'completed',
-    statusType: 'success',
-    completion: 100
-  }
+    issuedOn:'10-08-2023'
+  }, 
 ]

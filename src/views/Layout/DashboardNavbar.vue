@@ -30,7 +30,7 @@
                     <img alt="Image placeholder" src="img/theme/team-5.jpg">
                   </span>
             <b-media-body class="ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">Raj Patil</span>
+              <span class="mb-0 text-sm text-white  font-weight-bold">Raj Patil</span>
             </b-media-body>
           </b-media>
         </a>
