@@ -92,7 +92,15 @@
   
         <div class="form-group">
           <b-button class="primary" @click="previewOpen">Preview</b-button>
-          <b-button class="primary">Save</b-button>
+          <b-button class="primary" @click="save">Save</b-button>
+          <div>
+    <h2>Upload CSV File</h2>
+    <input type="file" @change="handleFileUpload" accept=".csv" />
+    <button @click="parseCSV">Parse CSV</button>
+
+    <h3>Parsed JSON Data</h3>
+    <pre>{{ jsonData }}</pre>
+  </div>
         </div>
       </div>
     </b-sidebar>
@@ -136,6 +144,8 @@
 </template>
 <script>
   import Vue from 'vue'
+  import axios from "axios"
+  import Papa from "papaparse"
   import VueClipboard from 'vue-clipboard2'
   import BaseHeader from '@/components/BaseHeader';
   import logoImage from "../assets/hypersign.jpg"
@@ -150,14 +160,9 @@
     },
     data(){
       return{
-        certDetails:{
-          certName:'',
-          issuerName:'',
-          subName:'',
-          issuerName:'',
-          subEmail:'',
-          issuanceDate: ''
-        },
+        csvFile:null,
+        jsonData: [],
+        certDetails:{},        
         imgS:'',
         name:'Raj',
         edit:false,
@@ -173,6 +178,44 @@
       previewOpen () {
         this.isPreview = true        
       },
+      async save(){
+        this.certDetails = {schemaId:"sch:hid:testnet:z6MkezirC1Wd2ENEVrdNnSEbMk1UiFN2KMUfj1E2aafRrMYU:1.0",recipientDetails:[...this.jsonData]}
+     const data = await axios({
+          method: 'post', 
+          url: 'http://localhost:3000/send/email',
+          data: this.certDetails
+        });             
+        console.log(data)
+        this.$notify({
+          type: 'success',
+          message: 'Successfully send certificate'
+        })
+      },
+    handleFileUpload(event) {
+      this.csvFile = event.target.files[0];
+    },
+    parseCSV() {
+    if (this.csvFile) {
+      Papa.parse(this.csvFile, {
+        header: true,
+        skipEmptyLines: true, // This will ignore any empty lines in the CSV
+        complete: (results) => {
+          // Filter out rows where all values are empty
+          this.jsonData = results.data.filter((row) => {
+            // Check if every value in the row is an empty string
+            return Object.values(row).some(value => value.trim() !== "");
+          });
+          console.log(this.jsonData);  // Display JSON data in console
+
+        },
+        error: (err) => {
+          console.error('Error parsing CSV:', err);
+        }
+      });
+    } else {
+      alert('Please upload a CSV file');
+    }
+  },
       openSlider () {        
         this.certDetails = {
           certName:'',
@@ -222,7 +265,7 @@
                 <td align="center">      
                   <h1 class="crt_title" style="margin-top: 5px; letter-spacing: 1px; color: rgb(80, 54, 101) !important;">SSI Workshop</h1>
                   <h2 style="font-size: larger; color: rgb(80, 54, 101);">CERTIFICATE</h2>
-                  <p style="margin-bottom: 0;">This Certificate is awarded to</p>
+                  <p style="margin-bottom: 0;">This Certificate is awarded</p>
                   <h1 class="crt_user" style="font-family: 'Satisfy', cursive; font-size: 40px; margin-top: 0; margin-bottom: 0;">Raj</h1>
                   <h3 class="afterName" style="font-weight: 100; color: rgb(80, 54, 101); margin-top: 0; margin-bottom: 0;">For participating in UVCE HAck<br> organized by <br> UVCE</h3>
                   <h3 style="margin-bottom: 0;">Awarded as 1st</h3>
