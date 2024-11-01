@@ -111,7 +111,6 @@ const issuerStore = {
                 const body = {
                   schemaId:UNIVERSITY_CERTIFICATE,
                   subjectDid: state.didDoc.id,
-                  // issuerDid:"did:hid:testnet:zHfG5jtCiZLarsiPENH4LZ1u9uUfCWpiXicWshJFZQXTn",
                   issuerDid:"did:hid:testnet:789533dc-13f5-4fc8-b60f-00af1b20c95d",
                   expirationDate: "2027-12-10T18:30:00.000Z",
                   fields: payload,

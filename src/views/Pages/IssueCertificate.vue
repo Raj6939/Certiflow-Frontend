@@ -27,7 +27,7 @@
                   </div>
                   <div style="margin-left: auto; text-align: center;">
                     <h4 class="mr-4 mt-4">Date</h4>
-                    <span class="mr-4">{{ new Date(vcDetails.issuanceDate).toDateString() }}</span>
+                    <span class="mr-4">{{ new Date(vcDetails.issuedDate).toDateString() }}</span>
                   </div>
                 </div>
                 </td>
@@ -59,7 +59,6 @@
 const jwt = require('jsonwebtoken');
 import html2canvas from "html2canvas";
 import { PDFDocument, StandardFonts } from 'pdf-lib'
-import toast from "../../util/toast";
 import { mapActions, mapState } from "vuex"
 import EventPass from '../Pages/EventPass.vue';
 import DegreeCertificate from '../Pages/DegreeCertificate.vue';
@@ -137,18 +136,18 @@ import JSZip from 'jszip';
       // this.download(pdfBytes, 'certificate.pdf', 'application/pdf');
       zip.file('certificate.pdf', pdfBytes);      
       this.showCert = true
-      this.toast('Downloaded Successfully','success')
+      console.log('Downloaded Successfully','success')
     } 
     else if(issueCert.credentialDocument && id === 'png'){
       const imgLink = this.generateCanvas()
       zip.file('certificate.png', imgLink);
-      this.toast('Downloaded Successfully','success')
+      console.log('Downloaded Successfully','success')
     }
     zip.file('credential.json',blobData)
     const zipBlob = await zip.generateAsync({ type: 'blob' });    
     this.download(zipBlob, 'certificate.zip', 'application/zip');
     } catch (error) {
-      this.toast(error,'error')
+      console.log(error,'error')
     }    
     
   },
@@ -197,6 +196,5 @@ import JSZip from 'jszip';
       // link.click();
         }
       },
-      mixins: [toast],
     };
   </script>

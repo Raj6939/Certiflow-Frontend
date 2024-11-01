@@ -23,7 +23,7 @@
                     </div>
                     <div style="margin-left: auto; text-align: center;">
                       <h4 class="mr-4 mt-4">Date</h4>
-                      <span class="mr-4">{{ certDetails.issuanceDate ? certDetails.issuanceDate : '{ Issuance Date }' }}</span>
+                      <span class="mr-4">{{ certDetails.issuedDate ? certDetails.issuedDate : '{ issued Date }' }}</span>
                     </div>
                   </div>
                   </td>

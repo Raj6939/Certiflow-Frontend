@@ -37,7 +37,7 @@
                   </div>
                   <div style="margin-left: auto; text-align: center;">
                     <h4 class="mr-4 mt-4">Date</h4>
-                    <span class="mr-4">{{ certDetails.issuanceDate ? certDetails.issuanceDate : '{ Issuance Date }' }}</span>
+                    <span class="mr-4">{{ certDetails.issuedDate ? certDetails.issuedDate : '{ issued Date }' }}</span>
                   </div>
                 </div>
                 </td>
@@ -79,7 +79,7 @@
         <div class="form-group">
           <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
           <label for="orgName"><strong>Issuance Date:</strong></label>
-          <input type="date" class="form-control" v-model="certDetails.issuanceDate" id="certName"
+          <input type="date" class="form-control" v-model="certDetails.issuedDate" id="certName"
             placeholder="Enter Subject Email">
         </div>  
 
@@ -179,7 +179,7 @@
         this.isPreview = true        
       },
       async save(){
-        this.certDetails = {schemaId:"sch:hid:testnet:z6MkezirC1Wd2ENEVrdNnSEbMk1UiFN2KMUfj1E2aafRrMYU:1.0",recipientDetails:[...this.jsonData]}
+        this.certDetails = {schemaId:"sch:hid:testnet:z6MkkipnHwpLmMHiQRdVaqRA1RwrQJcoP8ZDnm8Tqszreju5:1.0",recipientDetails:[...this.jsonData]}
      const data = await axios({
           method: 'post', 
           url: 'http://localhost:3000/send/email',
@@ -193,37 +193,73 @@
       },
     handleFileUpload(event) {
       this.csvFile = event.target.files[0];
-    },
-    parseCSV() {
-    if (this.csvFile) {
-      Papa.parse(this.csvFile, {
-        header: true,
-        skipEmptyLines: true, // This will ignore any empty lines in the CSV
-        complete: (results) => {
-          // Filter out rows where all values are empty
-          this.jsonData = results.data.filter((row) => {
-            // Check if every value in the row is an empty string
-            return Object.values(row).some(value => value.trim() !== "");
-          });
-          console.log(this.jsonData);  // Display JSON data in console
-
-        },
-        error: (err) => {
-          console.error('Error parsing CSV:', err);
-        }
-      });
-    } else {
-      alert('Please upload a CSV file');
-    }
   },
+  parseCSV() {
+  if (this.csvFile) {
+    Papa.parse(this.csvFile, {
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        // Filter and transform rows
+        this.jsonData = results.data
+          .filter((row) => {
+            // Filter out rows where all values are empty
+            return Object.values(row).some(value => value.trim() !== "");
+          })
+          .map((row) => {
+            // Convert date fields to ISO 8601 format
+            if (row.dateOfBirth) {
+              row.dateOfBirth = this.convertToISO(row.dateOfBirth);
+            }
+            if (row.degreeEarnedDate) {
+              row.degreeEarnedDate = this.convertToISO(row.degreeEarnedDate);
+            }
+            return row;
+          });
+        
+        console.log(this.jsonData);  // Display JSON data in console
+      },
+      error: (err) => {
+        console.error('Error parsing CSV:', err);
+      }
+    });
+  } else {
+    alert('Please upload a CSV file');
+  }
+},
+// Helper function to convert date to ISO 8601 format
+convertToISO(dateString) {
+  const parts = dateString.split('/');
+  // Check if the date has exactly three parts and that they’re numbers
+  if (parts.length !== 3) {
+    console.error("Invalid date format, expected MM/DD/YYYY");
+    return null;
+  }
+  
+  const [month, day, year] = parts;
+  // Validate month, day, and year values
+  if (isNaN(month) || isNaN(day) || isNaN(year) || month < 1 || month > 12 || day < 1 || day > 31 || year.length !== 4) {
+    console.error("Invalid date components");
+    return null;
+  }
+  // Construct the date string in YYYY-MM-DD format for compatibility with the Date constructor
+  const formattedDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T18:30:00Z`;
+  // Convert to ISO string format
+  const date = new Date(formattedDate);
+  if (isNaN(date.getTime())) { // Check if date is invalid
+    console.error("Failed to parse date:", formattedDate);
+    return null;
+  }
+  
+  return date.toISOString();
+},
       openSlider () {        
         this.certDetails = {
           certName:'',
           issuerName:'',
           subName:'',
           issuerName:'',
-          subEmail:'',
-          issuanceDate: ''
+          subEmail:''
         },
         this.$root.$emit("bv::toggle::collapse", "sidebar-right");
       },
