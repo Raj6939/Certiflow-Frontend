@@ -6,7 +6,7 @@
       <div class="header-body text-center">            
         <div class="cred-card-body" style="padding: 12px; color: rgb(80, 54, 101); font-size: small;">
           <div class="container" align="center">
-            <table class="cert" ref="credCardBody" style="border: 5px solid; min-height: 30rem; #b2bbc1; border-right: 5px solid #b2bbc1; border-left: 5px solid #b2bbc1; width: 90%; font-family: arial; color: rgb(80, 54, 101); background-color: white;">
+            <table class="cert" ref="credCardBody" style="border: 5px solid; min-height: 30rem; border-right: 5px solid #b2bbc1; border-left: 5px solid #b2bbc1; width: 50%; font-family: arial; color: rgb(80, 54, 101); background-color: white;">
               <tr>
                 <td align="center" class="crt_logo">
                 <img src="../../assets/hypersign.jpg" class="mt-2" width="100px" height="100px" alt="logo">

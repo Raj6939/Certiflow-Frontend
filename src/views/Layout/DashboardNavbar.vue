@@ -26,11 +26,11 @@
                      title-classes="nav-link pr-0">
         <a href="#" class="nav-link pr-0" @click.prevent slot="title-container">
           <b-media no-body class="align-items-center">
-                  <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="img/theme/team-5.jpg">
+                  <span class="avatar avatar-sm">
+                    <img alt="Image placeholder" src="../../assets//team-6.jpg">
                   </span>
             <b-media-body class="ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">Raj Patil</span>
+              <span class="mb-0 text-sm  font-weight-bold">MIT WPU</span>
             </b-media-body>
           </b-media>
         </a>

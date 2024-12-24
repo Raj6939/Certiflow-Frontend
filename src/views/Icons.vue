@@ -1,16 +1,13 @@
 <template>
   <div>
-    <b-sidebar id="sidebar-right" right shadow width="40%" :title="edit ? 'Edit Application' : 'Add Application'">
+    <b-sidebar id="sidebar-right" right shadow width="40%" :title="edit ? 'Edit Application' : 'Add Student Details'">
       <div class="container"  v-if="isPreview">        
             <b-card-header header-tag="header" class="p-1 border-0 accordin-header accordion-header-theme"  role="tab">
-              <b-button v-b-toggle.accordion-1 style="pointer-events:none;" variant="info"
-                class="bg-transparent border-0 text-left theme-color" title="Preview">
-                <i class="fas fa-file-contract"></i> Preview
-              </b-button>
-              <b-button variant="info" style="float:right" class="bg-transparent border-0 text-left theme-color"
+              <b-button class="primary" style="float: right;" @click="closePreview">Close</b-button>
+              <!-- <b-button variant="info" style="float:right" class="bg-transparent border-0 text-left theme-color"
                 title="Close" @click="closePreview">
                 <i class="fas fa-close">Close</i>
-              </b-button>
+              </b-button> -->
             </b-card-header>
             
             <div class="cred-card-body" style="padding: 12px; color: rgb(80, 54, 101); font-size: small;">
@@ -49,60 +46,21 @@
         </div>
                   
   
-        <div class="form-group">
+        <!-- <div class="form-group">
           <b-button class="primary" @click="previewOpen">Preview</b-button>
           <b-button class="primary">Save</b-button>
-        </div>
+        </div> -->
       </div>
-      <div class="container" v-else>
-        <div class="form-group">
-          <tool-tip infoMessage="Name of the application, upto 20 chars"></tool-tip>
-          <label for="orgName"><strong>Certificate Name<span style="color: red">*</span>:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.certName" id="certName"
-            placeholder="Enter certificate name">
-        </div>
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Subject Name:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.subName" id="certName"
-            placeholder="Enter Subject name">
-        </div>
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Subject Email Id:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.subEmail" id="certName"
-            placeholder="Enter Subject Email">
-        </div>
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Issuance Date:</strong></label>
-          <input type="date" class="form-control" v-model="certDetails.issuedDate" id="certName"
-            placeholder="Enter Subject Email">
-        </div>  
-
-        <div class="form-group">
-          <tool-tip infoMessage="Give a description for application, upto 100 chars"></tool-tip>
-          <label for="orgName"><strong>Issued By:</strong></label>
-          <input type="text" class="form-control" v-model="certDetails.issuerName" id="certName"
-            placeholder="Enter Subject Email">
-        </div>                 
-  
-        <div class="form-group">
+      <div class="form-group" v-if="csvFile!=null">
           <b-button class="primary" @click="previewOpen">Preview</b-button>
           <b-button class="primary" @click="save">Save</b-button>
-          <div>
-    <h2>Upload CSV File</h2>
+        </div>
+      <div>    
     <input type="file" @change="handleFileUpload" accept=".csv" />
     <button @click="parseCSV">Parse CSV</button>
-
     <h3>Parsed JSON Data</h3>
     <pre>{{ jsonData }}</pre>
-  </div>
-        </div>
-      </div>
+  </div>        
     </b-sidebar>
        <!-- BootstrapVue Done -->
     <base-header class="pb-6 pb-8 pt-md-5 bg-gradient-success">
