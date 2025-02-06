@@ -43,9 +43,10 @@
                   <b-dropdown id="dropdown-1" text="Download" class="m-md-2" variant="primary">
                     <b-dropdown-item @click="createPdf('pdf')">PDF</b-dropdown-item>
                     <b-dropdown-item @click="createPdf('png')">PNG</b-dropdown-item>                                        
-                  </b-dropdown>
-              </b-col>
+                  </b-dropdown>                  
+              </b-col>              
             </b-row>
+            <button @click="directToVerify" class="btn btn-warning mt-3">Verify Here</button>
           </div>
           <!-- <event-pass></event-pass> -->
 <!-- <degree-certificate :certDetails="vcDetails"></degree-certificate> -->
@@ -95,7 +96,9 @@ import JSZip from 'jszip';
           "issueCredential"
         ]),
         
-
+        directToVerify(){
+          window.open('/#/credential/issue/verify', '_blank');
+        },
 
   async createPdf(id) { 
     try {

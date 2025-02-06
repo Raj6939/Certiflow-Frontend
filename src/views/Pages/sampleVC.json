@@ -1,0 +1,96 @@
+{
+  "credentialDocument": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://raw.githubusercontent.com/hypersign-protocol/hypersign-contexts/main/HypersignCredentialStatus2023.jsonld",
+      {
+        "@context": {
+          "@protected": true,
+          "@version": 1.1,
+          "id": "@id",
+          "type": "@type",
+          "UniversityDegreeCertificate": {
+            "@context": {
+              "@propagate": true,
+              "@protected": true,
+              "xsd": "http://www.w3.org/2001/XMLSchema#",
+              "recipientFullName": {
+                "@id": "https://hypersign-schema.org/recipientFullName",
+                "@type": "xsd:string"
+              },
+              "recipientEmail": {
+                "@id": "https://hypersign-schema.org/recipientEmail",
+                "@type": "xsd:string"
+              },
+              "degreeType": {
+                "@id": "https://hypersign-schema.org/degreeType",
+                "@type": "xsd:string"
+              },
+              "degreeName": {
+                "@id": "https://hypersign-schema.org/degreeName",
+                "@type": "xsd:string"
+              },
+              "dateOfBirth": {
+                "@id": "https://hypersign-schema.org/dateOfBirth",
+                "@type": "xsd:string"
+              },
+              "degreeEarnedDate": {
+                "@id": "https://hypersign-schema.org/degreeEarnedDate",
+                "@type": "xsd:string"
+              },
+              "issuerName": {
+                "@id": "https://hypersign-schema.org/issuerName",
+                "@type": "xsd:string"
+              },
+              "enrollmentNumber": {
+                "@id": "https://hypersign-schema.org/enrollmentNumber",
+                "@type": "xsd:string"
+              },
+              "issuedDate": {
+                "@id": "https://hypersign-schema.org/issuedDate",
+                "@type": "xsd:string"
+              }
+            },
+            "@id": "https://hypersign-schema.org"
+          }
+        }
+      },
+      "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id": "vc:hid:testnet:z6MkehnxMKdcqC1Ys9xEi7iBh5WsVB7AQYZ8Ue4wWKT3Db39",
+    "type": [
+      "VerifiableCredential",
+      "UniversityDegreeCertificate"
+    ],
+    "expirationDate": "2027-12-10T18:30:00Z",
+    "issuanceDate": "2025-02-05T09:51:05Z",
+    "issuer": "did:hid:testnet:789533dc-13f5-4fc8-b60f-00af1b20c95d",
+    "credentialSubject": {
+      "recipientFullName": "Ratan Shikhari",
+      "recipientEmail": "ratanshikhari@gmail.com",
+      "degreeType": "Bachelor",
+      "degreeName": "Engineering",
+      "dateOfBirth": "1999-10-14T18:30:00.000Z",
+      "degreeEarnedDate": "1999-01-10T18:30:00.000Z",
+      "issuerName": "WIT Solapur",
+      "enrollmentNumber": "20182626261",
+      "issuedDate": "2025-02-05T07:06:42.280Z",
+      "id": "did:hid:testnet:z6Mko3o24423japrNYAf1rHdwJTrX6TJM92SW6KK6PbwASVD"
+    },
+    "credentialSchema": {
+      "id": "sch:hid:testnet:z6MkkipnHwpLmMHiQRdVaqRA1RwrQJcoP8ZDnm8Tqszreju5:1.0",
+      "type": "JsonSchemaValidator2018"
+    },
+    "credentialStatus": {
+      "id": "https://api.prajna.hypersign.id/hypersign-protocol/hidnode/ssi/credential/vc:hid:testnet:z6MkehnxMKdcqC1Ys9xEi7iBh5WsVB7AQYZ8Ue4wWKT3Db39",
+      "type": "HypersignCredentialStatus2023"
+    },
+    "proof": {
+      "type": "Ed25519Signature2020",
+      "created": "2025-02-05T09:52:45Z",
+      "verificationMethod": "did:hid:testnet:789533dc-13f5-4fc8-b60f-00af1b20c95d#key-1",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "z3Db32E1UoALvyohhVED9JK2vrhPiKSyf2cQoneS3cn1EypN7nvBX6YhMmpFViNLd9ENURfBr3CEU88Do9ZxzwGxW"
+    }
+  }}
+ 

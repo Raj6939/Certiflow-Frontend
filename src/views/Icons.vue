@@ -57,7 +57,7 @@
         </div>
       <div>    
     <input type="file" @change="handleFileUpload" accept=".csv" />
-    <button @click="parseCSV">Parse CSV</button>
+    <button @click="parseCSV" class="btn btn-success mt-3">Parse CSV</button>    
     <h3>Parsed JSON Data</h3>
     <pre>{{ jsonData }}</pre>
   </div>        
@@ -101,6 +101,7 @@
   </div>
 </template>
 <script>
+import config from '../config'
   import Vue from 'vue'
   import axios from "axios"
   import Papa from "papaparse"
@@ -137,10 +138,12 @@
         this.isPreview = true        
       },
       async save(){
+        console.log('hi')
+        console.log(config)
         this.certDetails = {schemaId:"sch:hid:testnet:z6MkkipnHwpLmMHiQRdVaqRA1RwrQJcoP8ZDnm8Tqszreju5:1.0",recipientDetails:[...this.jsonData]}
      const data = await axios({
           method: 'post', 
-          url: 'http://localhost:3000/send/email',
+          url: "https://certiflow-backend-production.up.railway.app/send/email",
           data: this.certDetails
         });             
         console.log(data)

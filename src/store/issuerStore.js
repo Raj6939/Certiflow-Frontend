@@ -24,7 +24,7 @@ const issuerStore = {
     },
     mutations: {
         setEntityAccessToken(state, payload) {
-          state.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijk0YWNhMGEyOGUwZTA5ZjQzNDY3ZWUxNzdiMGU2ZWQyOWZjOSIsInVzZXJJZCI6ImNjZWJlOWNlLWM1MzItNDVmNS1hNzlhLWZkZDRjMzAxYTljOCIsImdyYW50VHlwZSI6ImFjY2Vzc19zZXJ2aWNlX3NzaSIsImttc0lkIjoiaHM6ZG9jOmJhdGdpd25jZXRvbGJzbW53ZWUwOHloM3Q2aWRuN2w1ZTAwZjllYWhtNnciLCJ3aGl0ZWxpc3RlZENvcnMiOlsiKiIsImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MiIsImh0dHBzOi8vZW50aXR5LmRhc2hib2FyZC5oeXBlcnNpZ24uaWQiLCJodHRwczovL3ZlcmlmeS5oeXBlcnNpZ24uaWQiXSwic3ViZG9tYWluIjoiZW50LTdlMmU5NjgiLCJlZHZJZCI6ImhzOmRldmVsb3Blci1kYXNoYm9hcmQ6YXBwOjk0YWNhMGEyOGUwZTA5ZjQzNDY3ZWUxNzdiMGU2ZWQyOWZjOSIsImFjY2Vzc0xpc3QiOlsiQUxMIl0sImVudiI6ImRldiIsImFwcE5hbWUiOiJTY3ViZSIsImlhdCI6MTcyOTU0Njk1OCwiZXhwIjoxNzM0NzMwOTU4fQ.WLWEdUPwZePomw23vBrJ7ravWAkA3RpkzmB0-vVPfLc";
+          state.accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijk0YWNhMGEyOGUwZTA5ZjQzNDY3ZWUxNzdiMGU2ZWQyOWZjOSIsInVzZXJJZCI6ImNjZWJlOWNlLWM1MzItNDVmNS1hNzlhLWZkZDRjMzAxYTljOCIsImdyYW50VHlwZSI6ImFjY2Vzc19zZXJ2aWNlX3NzaSIsImttc0lkIjoiaHM6ZG9jOmJhdGdpd25jZXRvbGJzbW53ZWUwOHloM3Q2aWRuN2w1ZTAwZjllYWhtNnciLCJ3aGl0ZWxpc3RlZENvcnMiOlsiKiIsImh0dHA6Ly9sb2NhbGhvc3Q6ODA4MiIsImh0dHBzOi8vZW50aXR5LmRhc2hib2FyZC5oeXBlcnNpZ24uaWQiLCJodHRwczovL3ZlcmlmeS5oeXBlcnNpZ24uaWQiXSwic3ViZG9tYWluIjoiZW50LTdlMmU5NjgiLCJlZHZJZCI6ImhzOmRldmVsb3Blci1kYXNoYm9hcmQ6YXBwOjk0YWNhMGEyOGUwZTA5ZjQzNDY3ZWUxNzdiMGU2ZWQyOWZjOSIsImFjY2Vzc0xpc3QiOlsiQUxMIl0sImVudiI6ImRldiIsImFwcE5hbWUiOiJTY3ViZSIsImlhdCI6MTczNDk1NjMyMywiZXhwIjoxNzg2OTQwMzIzfQ.qqYVQTIrAG1oWgBS11HNrhbsE96Swt3q6vzL5ff2btg";
         },
         setDIDDoc(state,payload) {
           state.didDoc = payload
@@ -132,6 +132,32 @@ const issuerStore = {
                       throw new Error("Bad Request" + json.message.toString());
                     }                    
                     commit("setVCToStore",json.credentialDocument)
+                    resolve(json);
+                  });
+              } catch (error) {
+                reject(error);
+              }
+            });
+          },
+          verifyCredential: ({ getters }, payload) => {
+            console.log(payload)      
+            return new Promise((resolve, reject) => {
+              try {
+                const url = config.subdomain + "/api/v1/credential/verify";
+                const body = payload
+                fetch(url, {
+                  method: "POST",
+                  headers: getters.getEntityHeader,
+                  body: JSON.stringify(body),
+                })
+                  .then((resp) => {
+                    return resp.json();
+                  })
+                  .then((json) => {
+                    if (json.statusCode == 400) {
+                      throw new Error("Bad Request" + json.message.toString());
+                    }                    
+                    console.log(json)                    
                     resolve(json);
                   });
               } catch (error) {

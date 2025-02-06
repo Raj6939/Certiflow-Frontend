@@ -4,7 +4,8 @@ const config={
     subdomain:'https://ent-7e2e968.api.entity.hypersign.id',
     auth0ClientId:'z04t92Rk3NHeO9vS0xcraQ4Tc5XgJpYZ',
     auth0ClientSecret:'9P2ccFVdEYew2z0kopz5NSuoHfW4ZuMdVIpjHYQnmxaY4ihSDwKNsw1x-TPSD0xj',
-    auth0Domain:'certiflow.us.auth0.com'
+    auth0Domain:'certiflow.us.auth0.com',
+    server_base_url: 'https://certiflow-backend-production.up.railway.app/'
 }
 
 export default config
