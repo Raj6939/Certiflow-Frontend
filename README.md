@@ -24,6 +24,11 @@ Head to Ethereal at - https://ethereal.email/login
 
 ```password- VP8aEcd3MdsJ1hFy4S```
 
+Go to the messages Tab
+
+you will see the Email
+
+Click on ```Click Here``` button to open and download the Ceritficate
 
 2. Backend
 
