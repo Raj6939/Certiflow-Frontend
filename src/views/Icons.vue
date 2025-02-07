@@ -56,6 +56,7 @@
           <b-button class="primary" @click="save">Save</b-button>
         </div>
       <div>    
+        <button @click="downloadCSV" class="btn btn-success mt-3">Download Sample CSV</button>    
     <input type="file" @change="handleFileUpload" accept=".csv" />
     <button @click="parseCSV" class="btn btn-success mt-3">Parse CSV</button>    
     <h3>Parsed JSON Data</h3>
@@ -131,6 +132,10 @@ import config from '../config'
     mounted(){
     },
     methods: {
+      downloadCSV(){        
+        const csvUrl = "https://docs.google.com/spreadsheets/d/1b1JqPVbgBR0OpaIH0p5JdsOL10WIWCmXeciLnVqtnx0/edit?usp=sharing"; // Replace with your actual Google Sheets CSV link
+        window.open(csvUrl, "_blank");
+      },
       closePreview(){
         this.isPreview = false
       },
