@@ -16,6 +16,14 @@ Note: Use Node 14 Version to run this frontend repo
 
 Navigate to broswer
 
+I have used Ethereal email servie to get the credential in email. To see the emails you can checkout the Ethereal Email with below login and password
+
+Head to Ethereal at - https://ethereal.email/login
+ 
+```Email- retta.carroll8@ethereal.email```
+
+```password- VP8aEcd3MdsJ1hFy4S```
+
 
 2. Backend
 
